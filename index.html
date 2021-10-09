@@ -29,15 +29,14 @@
             // const geometry = new THREE.BoxGeometry(20, 20)
             // const geometry = new THREE.TorusKnotGeometry( 1, 3, 100, 16 );
             // const geometry = new THREE.TorusGeometry( 10, 3, 16, 100 );
-            const material = new THREE.MeshBasicMaterial({color:0x00FFFF});
+            const texture = new THREE.TextureLoader().load('texture/mars_texture.jpg')
+            const material = new THREE.MeshBasicMaterial({map:texture});
             sphere = new THREE.Mesh(geometry, material);
     
             scene.add(sphere)
             
-            camera.position.z = 25;
+            camera.position.z = 30;
         }
-
-        init()
 
         const animate = function(){
             requestAnimationFrame( animate );
@@ -46,6 +45,15 @@
             renderer.render(scene, camera);
         }
 
+        const windowOnResize = function(){
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        
+        window.addEventListener('resize', windowOnResize, false)
+        
+        init()
         animate()
 
     </script>
