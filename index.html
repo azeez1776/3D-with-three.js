@@ -12,9 +12,9 @@
     </style>
 </head>
 <body>
-    <script>
+    <script type="module">
 
-        import * as THREE from 'https://cdn.skypack.dev/three@v0.133.1';
+        import * as THREE from 'https://cdn.skypack.dev/pin/three@v0.133.1-dCIBIz3pnzocx0lNrLHe/mode=imports,min/optimized/three.js';
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerpectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
@@ -32,6 +32,8 @@
 
         function animate(){
             requestAnimationFrame( animate );
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
             renderer.render(scene, camera);
         }
 
